@@ -19,7 +19,22 @@ def show
     render({ :template =>"photo_templates/show.html.erb"})
   end
 
+def add_photo
+  image_url = params.fetch("input_image")
+  image_caption = params.fetch("input_caption")
+  image_owner_id = params.fetch("input_owner_id")
 
+  i = Photo.new
+  i.image = image_url
+  i.caption = image_caption
+  i.owner_id = image_owner_id
+  i.save
+
+  the_id = i.id
+
+    redirect_to("/photos/"+ the_id.to_s)
+
+end
 
   def delete
   the_id = params.fetch("photo_id")
