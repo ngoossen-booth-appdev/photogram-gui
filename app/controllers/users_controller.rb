@@ -15,4 +15,15 @@ def show
 
     render({ :template =>"user_templates/show.html.erb"})
   end
+
+def update
+  the_id = params.fetch(:user_id)
+
+  matching_user = User.where({:username => the_id})
+  @the_user = matching_user.at(0)
+
+    render({ :template =>"user_templates/show.html.erb"})
+  end
+
+
 end
